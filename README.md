@@ -1,3 +1,4 @@
+### گام ۱: افزودن یک روش پیام رسانی دیگر
 <table dir='rtl'>
 <tbody>
 <tr>
@@ -91,3 +92,112 @@
 </table>
 
 مجموع تعداد تغییرات: ۵
+
+### گام ۲: تحلیل و وارسی برنامه از منظر تحقق و یا عدم تحقق اصول SOLID
+
+<table dir='rtl'>
+<tbody>
+<tr>
+<td rowspan="2" width="240">
+<p>اصل 1</p>
+<p>Single Responsibility</p>
+</td>
+<td width="95">
+<p><strong>موارد تحقق</strong></p>
+</td>
+<td width="454">
+<p>Other message service and message type have a specific responsibility</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>موارد نقض</strong></p>
+</td>
+<td>
+<p>MessageService does not have a specific responsibility (it have methods for sending SMS, Email and Telegram messages)</p>
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<p>اصل 2</p>
+<p>Open-Close Principle (OCP)</p>
+</td>
+<td>
+<p><strong>موارد تحقق</strong></p>
+</td>
+<td>
+<p>To add a new message type we can easily extend Message class</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>موارد نقض</strong></p>
+</td>
+<td>
+<p>To add a new message service we need to implement all other sendX methods in MessageService</p>
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<p>اصل 3</p>
+<p>Liskov Substitution Principle</p>
+</td>
+<td>
+<p><strong>موارد تحقق</strong></p>
+</td>
+<td>
+<p>We could use child classed instead of parent class (e.g. EmailMessageService can be used as a MessageService)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>موارد نقض</strong></p>
+</td>
+<td>
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<p>اصل 4</p>
+<p>Interface Segregation Principle</p>
+</td>
+<td>
+<p><strong>موارد تحقق</strong></p>
+</td>
+<td>
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>موارد نقض</strong></p>
+</td>
+<td>
+<p>We need to implement all sendX method If we want to send only a specific type of message</p>
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<p>اصل 5</p>
+<p>Dependency Inversion Principle</p>
+</td>
+<td>
+<p><strong>موارد تحقق</strong></p>
+</td>
+<td>
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>موارد نقض</strong></p>
+</td>
+<td>
+<p>MessageService is dependant to its children and would cause problems</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+راهکارها:
