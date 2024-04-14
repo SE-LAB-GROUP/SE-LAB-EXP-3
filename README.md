@@ -201,3 +201,117 @@
 </table>
 
 راهکارها:
+<table dir='rtl'>
+<tbody>
+<tr>
+<td width="168">
+<p><strong>اصل مربوطه (از اصول </strong><strong>SOLID</strong><strong>)</strong></p>
+</td>
+<td width="246">
+<p><strong>علت نقض</strong></p>
+</td>
+<td width="284">
+<p><strong>راه حل پیشنهادی</strong></p>
+</td>
+</tr>
+<tr>
+<td width="168">
+<p>Single Responsibility</p>
+</td>
+<td width="246">
+<p>It have methods for sending SMS, Email and Telegram messages</p>
+</td>
+<td width="284">
+<p>To put one function for sending message and extend it in every child in MessageService (as we do it in step 3) </p>
+</td>
+</tr>
+<tr>
+<td width="168">
+<p>Open-Closed</p>
+</td>
+<td width="246">
+<p>To add a new message service we need to implement all other sendX methods in MessageService</p>
+</td>
+<td width="284">
+<p>To put one function for sending message and extend it in every child in MessageService (as we do it in step 3) </p>
+</td>
+</tr>
+<tr>
+<td width="168">
+<p>Interface Segregation</p>
+</td>
+<td width="246">
+<p>We need to implement all sendX method If we want to send only a specific type of message</p>
+</td>
+<td width="284">
+<p>To put one function for sending message and extend it in every child in MessageService (as we do it in step 3)</p>
+</td>
+</tr>
+<tr>
+<td width="168">
+<p>Dependency Inversion</p>
+</td>
+<td width="246">
+<p>MessageService is dependant to its children and would cause problems</p>
+</td>
+<td width="284">
+<p>To put one function for sending message and extend it in every child in MessageService (as we do it in step 3)</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+####همانطور که میبینید با یک تغییر(جایگزینی یک تابع sendMessage با توابع ارسال پیام به ازای هر سرویس) مشکلات زیادی از نقض موارد در SOLID حل شد.
+
+### گام ۴: بررسی مجدد تغییرات مورد نیاز
+<table dir='rtl'>
+<tbody>
+<tr>
+<td width="64">
+<p><strong>ردیف</strong></p>
+</td>
+<td width="198">
+<p><strong>محل اعمال تغییرات (کلاس/واسط)</strong></p>
+</td>
+<td width="141">
+<p><strong>عنوان تغییر</strong></p>
+</td>
+<td width="292">
+<p><strong>شرحی کوتاه از تغییر</strong></p>
+</td>
+</tr>
+<tr>
+<td width="64">
+<p><strong>1</strong></p>
+</td>
+<td width="198">
+<p>TelegramMessageService</p>
+</td>
+<td width="141">
+<p>Add Class</p>
+</td>
+<td width="292">
+<p>Add TelegramMessageService</p>
+</td>
+</tr>
+<tr>
+<td width="64">
+<p><strong>2</strong></p>
+</td>
+<td width="198">
+<p>Main</p>
+</td>
+<td width="141">
+<p>Add a case block</p>
+</td>
+<td width="292">
+<p>Add a case block to switch-case in main for reading user's input when sending telegram message</p>
+</td>
+</tr>
+</tbody>
+</table>
+مجموع تعداد تغییرات: ۲
+
+### گام ۵: جمع بندی
+به طور کلی پس از انجام دادن کارها در گام سوم تغییر و اضافه کردن فیچرها راحت‌تر شده و اورهد کمتری نیز خواهند داشت
